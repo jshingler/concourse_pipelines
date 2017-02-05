@@ -1,0 +1,8 @@
+version: '2'
+services:
+    concourse_pipelines-sonar:
+        container_name: concourse_pipelines-sonar
+        image: sonarqube:6.2-alpine
+        ports:
+            - 9000:9000
+            - 9092:9092
