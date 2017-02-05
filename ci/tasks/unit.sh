@@ -18,7 +18,7 @@ echo "Install NPM"
 echo "========================="
 ./gradlew npmInstall -PnodeInstall
 echo "========================="
-./gradlew yarn_install
+./gradlew yarn_install -PnodeInstall
 echo "========================="
 
 # Run Test on unrebased branch
