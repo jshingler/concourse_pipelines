@@ -14,9 +14,14 @@ git config --global user.email "CI@concourse.ci"
 git config --global user.name "Concourse.CI"
 # git remote -v
 
+echo "Install NPM"
+echo "========================="
+./gradlew npmInstall -PnodeInstall
+echo "========================="
+
 # Run Test on unrebased branch
 echo "Run Tests and Sonar: ${SONAR}"
-./gradlew npmInstall -PnodeInstall
+
 #./gradlew -Dsonar.host.url=${SONAR} test sonarqube
 ./gradlew test 
 
