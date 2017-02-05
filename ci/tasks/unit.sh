@@ -16,6 +16,7 @@ git config --global user.name "Concourse.CI"
 
 # Run Test on unrebased branch
 echo "Run Tests and Sonar: ${SONAR}"
+./gradlew npmInstall -PnodeInstall
 #./gradlew -Dsonar.host.url=${SONAR} test sonarqube
 ./gradlew test 
 
