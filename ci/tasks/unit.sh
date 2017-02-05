@@ -18,6 +18,8 @@ echo "Install NPM"
 echo "========================="
 ./gradlew npmInstall -PnodeInstall
 echo "========================="
+./gradlew yarn_install
+echo "========================="
 
 # Run Test on unrebased branch
 echo "Run Tests and Sonar: ${SONAR}"
