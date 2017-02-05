@@ -31,35 +31,35 @@ resources:
       uri: {{GIT_REPO}}
       branch: {{GIT_BRANCH}}
 
-  - name: deploy-test-app
-    type: cf
-    source:
-      api: {{CF_API}}
-      username: {{CF_USER}}
-      password: {{CF_PASS}}
-      organization: {{CF_TEST_ORG}}
-      space: {{CF_TEST_SPACE}}
-      skip_cert_check: true
+  # - name: deploy-test-app
+  #   type: cf
+  #   source:
+  #     api: {{CF_API}}
+  #     username: {{CF_USER}}
+  #     password: {{CF_PASS}}
+  #     organization: {{CF_TEST_ORG}}
+  #     space: {{CF_TEST_SPACE}}
+  #     skip_cert_check: true
 
-  - name: deploy-dev-app
-    type: cf
-    source:
-      api: {{CF_API}}
-      username: {{CF_USER}}
-      password: {{CF_PASS}}
-      organization: {{CF_DEV_ORG}}
-      space: {{CF_DEV_SPACE}}
-      skip_cert_check: true
+  # - name: deploy-dev-app
+  #   type: cf
+  #   source:
+  #     api: {{CF_API}}
+  #     username: {{CF_USER}}
+  #     password: {{CF_PASS}}
+  #     organization: {{CF_DEV_ORG}}
+  #     space: {{CF_DEV_SPACE}}
+  #     skip_cert_check: true
 
-  - name: build-artifact-jar
-    type: maven
-    source:
-      group: com.example
-      artifact: concourse-spring-boot
-      # repository: {{MAVEN_REPO}}/repository/maven-snapshots
-      repository: http://nexus:8081/repository/maven-snapshots
-      # re:pository: http://172.30.7.5:8081/repository/maven-snapshots
-      # repository: http://10.210.168.181:8081/repository/maven-snapshot
+  # - name: build-artifact-jar
+  #   type: maven
+  #   source:
+  #     group: com.example
+  #     artifact: concourse-spring-boot
+  #     # repository: {{MAVEN_REPO}}/repository/maven-snapshots
+  #     repository: http://nexus:8081/repository/maven-snapshots
+  #     # re:pository: http://172.30.7.5:8081/repository/maven-snapshots
+  #     # repository: http://10.210.168.181:8081/repository/maven-snapshot
 
 
 # -----------------------------------------------------
@@ -81,21 +81,21 @@ jobs:
     #   params:
     #     manifest: source-code/manifest-test.yml
 
-  - name: package-and-deploy
-    plan:
-    - get: source-code
-      passed: [ unit-tests ]
-      trigger: true
-    - task: package
-      file: source-code/ci/tasks/package.yml
-      params:
-        MAVEN_REPO: {{MAVEN_REPO}}
-    - put: deploy-dev-app
-      params:
-        manifest: source-code/manifest-test.yml
-        path: build/concourse-spring-boot*.jar
-        current_app_name: concourse-spring-boot
-        # path: source-code/build/libs/concourse-spring-boot-0.0.2-SNAPSHOT.jar
+  # - name: package-and-deploy
+  #   plan:
+  #   - get: source-code
+  #     passed: [ unit-tests ]
+  #     trigger: true
+  #   - task: package
+  #     file: source-code/ci/tasks/package.yml
+  #     params:
+  #       MAVEN_REPO: {{MAVEN_REPO}}
+  #   - put: deploy-dev-app
+  #     params:
+  #       manifest: source-code/manifest-test.yml
+  #       path: build/concourse-spring-boot*.jar
+  #       current_app_name: concourse-spring-boot
+  #       # path: source-code/build/libs/concourse-spring-boot-0.0.2-SNAPSHOT.jar
 
   # - name: deploy-to-dev
   #   plan:
