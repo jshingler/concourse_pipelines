@@ -9,7 +9,7 @@ echo "Helpful commands:"
 echo "  fly -t lite login -c http://192.168.100.4:8080"
 echo "  fly -t lite intercept -b 33"
 
-branch=$(git symbolic-ref --short HEAD)
+branch=$(git symbolic-ref --short HEAD | sed -e "s/\//_/")
 
 target=$1
 base=`basename "$PWD"`
