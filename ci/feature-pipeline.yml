@@ -79,8 +79,8 @@ jobs:
         SONAR: {{SONAR}}
     - put: source-code
         params:
-          repository: out
-          tag: out/tag
+          repository: source-code
+          tag: source-code/tag
           only_tag: true
     # - put: deploy-dev-app
     #   params:

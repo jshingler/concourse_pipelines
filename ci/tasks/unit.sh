@@ -26,6 +26,7 @@ echo "Run Tests and Sonar: ${SONAR}"
 
 #./gradlew -Dsonar.host.url=${SONAR} test sonarqube
 ./gradlew test -PnodeInstall
+echo "dev/$(date '+%Y%m%d%H%M%S')" > tag
 
 # # Rebase Origin Master on this branch and rerun test (Build Acceptance)
 # # git merge origin/master
