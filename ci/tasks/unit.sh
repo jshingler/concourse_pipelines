@@ -18,14 +18,15 @@ echo "Install NPM"
 echo "========================="
 ./gradlew npmInstall -PnodeInstall
 echo "========================="
-./gradlew yarn_install -PnodeInstall
+# ./gradlew yarn_install -PnodeInstall
 echo "========================="
 
 # Run Test on unrebased branch
 echo "Run Tests and Sonar: ${SONAR}"
 
 #./gradlew -Dsonar.host.url=${SONAR} test sonarqube
-./gradlew test  -PnodeInstall
+./gradlew test 
+# -PnodeInstall
 
 # # Rebase Origin Master on this branch and rerun test (Build Acceptance)
 # # git merge origin/master
