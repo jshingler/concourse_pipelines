@@ -49,14 +49,14 @@ node {
   // If false, it will try to use globally installed node.
   download = true
 
-  // Set the work directory for unpacking node
-  workDir = file("${project.buildDir}/nodejs")
+  // // Set the work directory for unpacking node
+  // workDir = file("${project.buildDir}/nodejs")
 
-  // Set the work directory for NPM
-  npmWorkDir = file("${project.buildDir}/npm")
+  // // Set the work directory for NPM
+  // npmWorkDir = file("${project.buildDir}/npm")
 
-  // Set the work directory for Yarn
-  yarnWorkDir = file("${project.buildDir}/yarn")
+  // // Set the work directory for Yarn
+  // yarnWorkDir = file("${project.buildDir}/yarn")
   }
 
 bootRepackage {
