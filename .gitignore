@@ -1,5 +1,6 @@
 credentials.yml
 node_modules
+target
 build
 .gradle
 .idea
