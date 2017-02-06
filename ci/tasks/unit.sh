@@ -25,8 +25,7 @@ echo "========================="
 echo "Run Tests and Sonar: ${SONAR}"
 
 #./gradlew -Dsonar.host.url=${SONAR} test sonarqube
-./gradlew test 
-# -PnodeInstall
+./gradlew test -PnodeInstall
 
 # # Rebase Origin Master on this branch and rerun test (Build Acceptance)
 # # git merge origin/master
