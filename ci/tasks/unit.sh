@@ -15,7 +15,8 @@ echo "Repo resource folder is [${REPO_RESOURCE}]"
 # echo "Tools resource folder is [${TOOLS_RESOURCE}]"
 # echo "Version resource folder is [${VERSION_RESOURCE}]"
 
-. ${ROOT_FOLDER}/${REPO_RESOURCE}/ci/tasks/pipeline.sh
+cd ${ROOT_FOLDER}/${REPO_RESOURCE}
+. ci/tasks/pipeline.sh
 
 echo "Configuring Git"
 git status
@@ -26,8 +27,6 @@ git config --global user.name "Concourse.CI"
 
 
 echo "Build and Publish to Maven Repo"
-cd ${ROOT_FOLDER}/${REPO_RESOURCE}
-
 
 echo "Install NPM"
 echo "========================="
