@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e # fail fast
 set -x # print commands
@@ -16,7 +16,7 @@ echo "Repo resource folder is [${REPO_RESOURCE}]"
 # echo "Version resource folder is [${VERSION_RESOURCE}]"
 
 cd ${ROOT_FOLDER}/${REPO_RESOURCE}
-. ci/tasks/pipeline.sh
+source ci/tasks/pipeline.sh
 
 echo "Configuring Git"
 git status
