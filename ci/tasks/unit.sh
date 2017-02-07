@@ -15,7 +15,7 @@ echo "Repo resource folder is [${REPO_RESOURCE}]"
 # echo "Tools resource folder is [${TOOLS_RESOURCE}]"
 # echo "Version resource folder is [${VERSION_RESOURCE}]"
 
-. ${ROOT_FOLDER}/ci/tasks/pipeline.sh
+. ${ROOT_FOLDER}/${REPO_RESOURCE}/ci/tasks/pipeline.sh
 
 echo "Configuring Git"
 git status
