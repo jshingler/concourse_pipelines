@@ -4,37 +4,37 @@ set -e
 # It takes ages on Docker to run the app without this
 export MAVEN_OPTS="${MAVEN_OPTS} -Djava.security.egd=file:///dev/urandom"
 
-# function logInToCf() {
-#     local redownloadInfra="${1}"
-#     local cfUsername="${2}"
-#     local cfPassword="${3}"
-#     local cfOrg="${4}"
-#     local cfSpace="${5}"
-#     local apiUrl="${6:-api.run.pivotal.io}"
-#     CF_INSTALLED="$( cf --version || echo "false" )"
-#     CF_DOWNLOADED="$( test -r cf && echo "true" || echo "false" )"
-#     echo "CF Installed? [${CF_INSTALLED}], CF Downloaded? [${CF_DOWNLOADED}]"
-#     if [[ ${CF_INSTALLED} == "false" && (${CF_DOWNLOADED} == "false" || ${CF_DOWNLOADED} == "true" && ${redownloadInfra} == "true") ]]; then
-#         echo "Downloading Cloud Foundry"
-#         curl -L "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" --fail | tar -zx
-#         CF_DOWNLOADED="true"
-#     else
-#         echo "CF is already installed or was already downloaded but the flag to redownload was disabled"
-#     fi
+function logInToCf() {
+    local redownloadInfra="${1}"
+    local cfUsername="${2}"
+    local cfPassword="${3}"
+    local cfOrg="${4}"
+    local cfSpace="${5}"
+    local apiUrl="${6:-api.run.pivotal.io}"
+    CF_INSTALLED="$( cf --version || echo "false" )"
+    CF_DOWNLOADED="$( test -r cf && echo "true" || echo "false" )"
+    echo "CF Installed? [${CF_INSTALLED}], CF Downloaded? [${CF_DOWNLOADED}]"
+    if [[ ${CF_INSTALLED} == "false" && (${CF_DOWNLOADED} == "false" || ${CF_DOWNLOADED} == "true" && ${redownloadInfra} == "true") ]]; then
+        echo "Downloading Cloud Foundry"
+        curl -L "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" --fail | tar -zx
+        CF_DOWNLOADED="true"
+    else
+        echo "CF is already installed or was already downloaded but the flag to redownload was disabled"
+    fi
 
-#     if [[ ${CF_DOWNLOADED} == "true" ]]; then
-#         echo "Adding CF to PATH"
-#         PATH=${PATH}:`pwd`
-#         chmod +x cf
-#     fi
+    if [[ ${CF_DOWNLOADED} == "true" ]]; then
+        echo "Adding CF to PATH"
+        PATH=${PATH}:`pwd`
+        chmod +x cf
+    fi
 
-#     echo "Cloud foundry version"
-#     cf --version
+    echo "Cloud foundry version"
+    cf --version
 
-#     echo "Logging in to CF to org [${cfOrg}], space [${cfSpace}]"
-#     cf api --skip-ssl-validation "${apiUrl}"
-#     cf login -u "${cfUsername}" -p "${cfPassword}" -o "${cfOrg}" -s "${cfSpace}"
-# }
+    echo "Logging in to CF to org [${cfOrg}], space [${cfSpace}]"
+    cf api --skip-ssl-validation "${apiUrl}"
+    cf login -u "${cfUsername}" -p "${cfPassword}" -o "${cfOrg}" -s "${cfSpace}"
+}
 
 # function deployRabbitMqToCf() {
 #     local rabbitMqAppName="${1:-github-rabbitmq}"
