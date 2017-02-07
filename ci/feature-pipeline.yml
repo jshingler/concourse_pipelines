@@ -77,11 +77,11 @@ jobs:
       file: source-code/ci/tasks/unit.yml
       params:
         SONAR: {{SONAR}}
-    - put: source-code
-        params:
-          repository: source-code
-          tag: source-code/tag
-          only_tag: true
+    # - put: source-code
+    #     params:
+    #       repository: source-code
+    #       tag: source-code/tag
+    #       only_tag: true
     # - put: deploy-dev-app
     #   params:
     #     manifest: source-code/manifest-test.yml
