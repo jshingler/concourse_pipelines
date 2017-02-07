@@ -10,7 +10,7 @@ inputs:
   - name: source-code
 
 outputs:
-  - name: source-code2
+  - name: source-code
 
 params:
   USERNAME: NOT_SET_USERNAME

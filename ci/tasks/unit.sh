@@ -4,9 +4,19 @@ set -e # fail fast
 set -x # print commands
 export TERM=${TERM:-dumb}
 
-echo "Build and Publish to Maven Repo"
+export ROOT_FOLDER=$( pwd )
+export REPO_RESOURCE=source-code
+# export TOOLS_RESOURCE=tools
+# export VERSION_RESOURCE=version
+export OUTPUT_RESOURCE=out
 
-cd source-code
+echo "Root folder is [${ROOT_FOLDER}]"
+echo "Repo resource folder is [${REPO_RESOURCE}]"
+# echo "Tools resource folder is [${TOOLS_RESOURCE}]"
+# echo "Version resource folder is [${VERSION_RESOURCE}]"
+
+source ${ROOT_FOLDER}/ci/tasks/pipeline.sh
+
 echo "Configuring Git"
 git status
 git config --global core.mergeoptions --no-edit
@@ -14,11 +24,14 @@ git config --global user.email "CI@concourse.ci"
 git config --global user.name "Concourse.CI"
 # git remote -v
 
+
+echo "Build and Publish to Maven Repo"
+cd ${ROOT_FOLDER}/${REPO_RESOURCE}
+
+
 echo "Install NPM"
 echo "========================="
 ./gradlew npmInstall -PnodeInstall
-echo "========================="
-# ./gradlew yarn_install -PnodeInstall
 echo "========================="
 
 # Run Test on unrebased branch
